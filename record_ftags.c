@@ -40,7 +40,7 @@ static void	update_fdata_with_flags(t_fdata *fdata, const char *arg)
 
 static void	update_fdata_with_width(t_fdata *fdata, const char *arg)
 {
-	if (isdigit((int)*arg))
+	if (ft_isdigit((int)*arg))
 		fdata->width = ft_atoi(arg);
 	else
 		fdata->width = 0;
