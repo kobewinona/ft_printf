@@ -12,7 +12,7 @@
 
 #ifndef LIBFTPRINTF_INTERNAL_H
 # define LIBFTPRINTF_INTERNAL_H
-# include "libft/libft.h"
+# include "./includes/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
 # include <limits.h>
