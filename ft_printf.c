@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf_internal.h"
 
 static void	route_fspec(t_fdata *fdata)
 {

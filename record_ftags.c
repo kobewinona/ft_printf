@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf_internal.h"
 
 static void	update_fdata_with_flags(t_fdata *fdata, const char *arg)
 {

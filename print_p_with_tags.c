@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf_internal.h"
 
 static int	print_x(t_fdata *fdata)
 {

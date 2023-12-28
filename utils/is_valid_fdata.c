@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf_internal.h"
 
 int	is_valid_fdata(const char *arg)
 {

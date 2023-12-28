@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf_internal.h"
 
 int	is_char_in_set(char const c, char const *set)
 {

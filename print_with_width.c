@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf_internal.h"
 
 int	print_with_width(t_print_func print_func, t_fdata *fdata)
 {

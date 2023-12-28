@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_precision_len.c                              :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 18:59:41 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/24 18:59:42 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/09 11:50:10 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/09 11:50:11 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf_internal.h"
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
-void	count_precision_len(int n, t_fdata *fdata)
-{
-	ssize_t	len;
+int		ft_printf(const char *arg, ...);
 
-	len = fdata->len;
-	if (n < 0)
-		len -= 1;
-	fdata->precision_len = 0;
-	if (fdata->precision > len)
-		fdata->precision_len = fdata->precision - len;
-}
+#endif

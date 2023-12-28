@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf_internal.h"
 
 char	*create_x_xtrs(void *content, ssize_t len, char spec)
 {

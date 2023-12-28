@@ -16,7 +16,7 @@ SRCS 	= ft_printf.c print_ld.c record_ftags.c print_width.c print_with_width.c \
 		$(UTILSD)/print_preceeding_flags.c $(UTILSD)/create_p_xstr.c $(UTILSD)/create_x_xstr.c
 OBJS 	= $(SRCS:.c=.o)
 
-$(NAME): $(OBJS) ft_printf.h
+$(NAME): $(OBJS) libftprintf.h libftprintf_internal.h
 	$(MAKE) -C $(LIBFTD)
 	cp $(LIBFTD)/$(LIBFTA) $(NAME)
 	$(AR) rcs $(NAME) $^

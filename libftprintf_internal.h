@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf_internal.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 11:50:10 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/09 11:50:11 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/12/11 19:56:47 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/12/11 19:56:48 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef LIBFTPRINTF_INTERNAL_H
+# define LIBFTPRINTF_INTERNAL_H
 # include "libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
@@ -33,7 +33,6 @@ typedef struct s_fdata
 	ssize_t	len;
 }			t_fdata;
 typedef int	(*t_print_func)(t_fdata *);
-int		ft_printf(const char *arg, ...);
 int		is_valid_fdata(const char *arg);
 int		is_char_in_set(char const c, char const *set);
 int		count_dec_len(long n);
