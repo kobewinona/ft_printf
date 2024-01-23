@@ -22,7 +22,7 @@ $(NAME): $(OBJS) libftprintf.h libftprintf_internal.h
 	$(AR) rcs $(NAME) $^
 
 all: $(NAME)
-
+it merge
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
