@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_x_xstr.c                                    :+:      :+:    :+:   */
+/*   handle_print_char.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:28:51 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/26 12:28:52 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/15 19:20:37 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/15 19:20:38 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf_internal.h"
 
-char	*create_x_xtrs(void *content, ssize_t len, char spec)
+static int	print_c(t_fdata *fdata)
 {
-	char	*x_s;
-	long	n;
-	long	n_mod;
+	char	*c_p;
 
-	x_s = NULL;
-	x_s = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!x_s)
-		return (NULL);
-	n = (unsigned int)content;
-	x_s[len] = '\0';
-	while (len-- > 0)
-	{
-		n_mod = n % 16;
-		if (n_mod < 10)
-			x_s[len] = n_mod + '0';
-		else
-			x_s[len] = n_mod + (spec - 33);
-		n /= 16;
-	}
-	return (x_s);
+	c_p = (char *)fdata->content;
+	return (write(1, &c_p, 1));
+}
+
+void	print_c_with_tags(t_fdata *fdata)
+{
+	fdata->len = 1;
+	if (print_with_width(print_c, fdata) < 0)
+		fdata->len = -1;
 }

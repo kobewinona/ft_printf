@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf_internal.h"
+#include "../includes/libftprintf_internal.h"
 
 int	print_preceeding_flags(long n, t_fdata *fdata)
 {

@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_x_xstr.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:28:51 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/26 12:28:52 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/30 12:19:27 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/30 12:19:28 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-char	*create_x_xtrs(void *content, ssize_t len, char spec)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*x_s;
-	long	n;
-	long	n_mod;
+	char	*s3;
+	size_t	total_len;
 
-	x_s = NULL;
-	x_s = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!x_s)
+	if (s1 && s2)
+		total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	else
 		return (NULL);
-	n = (unsigned int)content;
-	x_s[len] = '\0';
-	while (len-- > 0)
-	{
-		n_mod = n % 16;
-		if (n_mod < 10)
-			x_s[len] = n_mod + '0';
-		else
-			x_s[len] = n_mod + (spec - 33);
-		n /= 16;
-	}
-	return (x_s);
+	s3 = (char *)malloc(total_len * sizeof(char));
+	if (!s3)
+		return (NULL);
+	ft_strlcpy(s3, s1, total_len);
+	ft_strlcat(s3, s2, total_len);
+	return (s3);
 }

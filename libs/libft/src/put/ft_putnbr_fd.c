@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/31 19:05:34 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/31 19:05:37 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_char_in_set(char const c, char const *set)
+void	ft_putnbr_fd(int n, int fd)
 {
-	while (*set)
+	long	temp_n;
+
+	temp_n = (long)n;
+	if (n < 0)
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		write(fd, "-", 1);
+		temp_n *= -1;
 	}
-	return (0);
+	if (temp_n >= 10)
+	{
+		ft_putnbr_fd((temp_n / 10), fd);
+		ft_putnbr_fd((temp_n % 10), fd);
+	}
+	else
+		ft_putchar_fd((temp_n + '0'), fd);
 }

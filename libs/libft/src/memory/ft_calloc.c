@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_x_xstr.c                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:28:51 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/26 12:28:52 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/04 21:56:26 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/04 21:56:27 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-char	*create_x_xtrs(void *content, ssize_t len, char spec)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*x_s;
-	long	n;
-	long	n_mod;
+	unsigned char	*p;
 
-	x_s = NULL;
-	x_s = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!x_s)
+	if (count > 0 && SIZE_MAX / count < size)
 		return (NULL);
-	n = (unsigned int)content;
-	x_s[len] = '\0';
-	while (len-- > 0)
-	{
-		n_mod = n % 16;
-		if (n_mod < 10)
-			x_s[len] = n_mod + '0';
-		else
-			x_s[len] = n_mod + (spec - 33);
-		n /= 16;
-	}
-	return (x_s);
+	p = (unsigned char *)malloc(count * size);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, (count * size));
+	return (p);
 }

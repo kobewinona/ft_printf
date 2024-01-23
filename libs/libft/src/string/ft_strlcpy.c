@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/27 17:06:46 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/27 17:06:48 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_char_in_set(char const c, char const *set)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	while (*set)
+	size_t	src_len;
+	size_t	i;
+
+	src_len = 0;
+	if (src)
+		src_len = ft_strlen(src);
+	if (dstsize > 0)
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		i = 0;
+		while (i < (dstsize - 1) && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	return (0);
+	return (src_len);
 }

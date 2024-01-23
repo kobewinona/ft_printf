@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_x_xstr.c                                    :+:      :+:    :+:   */
+/*   print_p_with_tags.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:28:51 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/26 12:28:52 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/20 19:49:15 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/20 19:49:16 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf_internal.h"
 
-char	*create_x_xtrs(void *content, ssize_t len, char spec)
+static int	print_x(t_fdata *fdata)
 {
 	char	*x_s;
-	long	n;
-	long	n_mod;
+	size_t	i;
 
-	x_s = NULL;
-	x_s = (char *)ft_calloc((len + 1), sizeof(char));
+	x_s = create_p_xstr(fdata->content, fdata->len);
 	if (!x_s)
-		return (NULL);
-	n = (unsigned int)content;
-	x_s[len] = '\0';
-	while (len-- > 0)
+		return (-1);
+	i = 0;
+	while (x_s[i])
 	{
-		n_mod = n % 16;
-		if (n_mod < 10)
-			x_s[len] = n_mod + '0';
-		else
-			x_s[len] = n_mod + (spec - 33);
-		n /= 16;
+		if (write(1, &x_s[i], 1) < 0)
+		{
+			free(x_s);
+			return (-1);
+		}
+		i++;
 	}
-	return (x_s);
+	free(x_s);
+	return (1);
+}
+
+void	print_p_with_tags(t_fdata *fdata)
+{
+	fdata->len = 2 + count_hex_len((unsigned long)fdata->content);
+	if (print_with_width(print_x, fdata) < 0)
+		fdata->len = -1;
 }

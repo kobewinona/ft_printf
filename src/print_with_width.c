@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_x_xstr.c                                    :+:      :+:    :+:   */
+/*   print_with_width.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:28:51 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/26 12:28:52 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/15 19:19:39 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/15 19:19:40 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf_internal.h"
 
-char	*create_x_xtrs(void *content, ssize_t len, char spec)
+int	print_with_width(t_print_func print_func, t_fdata *fdata)
 {
-	char	*x_s;
-	long	n;
-	long	n_mod;
-
-	x_s = NULL;
-	x_s = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!x_s)
-		return (NULL);
-	n = (unsigned int)content;
-	x_s[len] = '\0';
-	while (len-- > 0)
+	if (fdata->justify == 1 && fdata->width)
 	{
-		n_mod = n % 16;
-		if (n_mod < 10)
-			x_s[len] = n_mod + '0';
-		else
-			x_s[len] = n_mod + (spec - 33);
-		n /= 16;
+		if (print_width(fdata) < 0)
+			return (-1);
 	}
-	return (x_s);
+	if (print_func(fdata) < 0)
+		return (-1);
+	if (fdata->justify == -1 && fdata->width)
+	{
+		if (print_width(fdata) < 0)
+			return (-1);
+	}
+	if (fdata->width > fdata->len)
+		fdata->len += (fdata->width - fdata->len);
+	return (1);
 }

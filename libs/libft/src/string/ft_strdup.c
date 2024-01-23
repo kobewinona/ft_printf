@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_x_xstr.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:28:51 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/26 12:28:52 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/30 11:29:33 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/30 11:29:34 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-char	*create_x_xtrs(void *content, ssize_t len, char spec)
+char	*ft_strdup(const char *s1)
 {
-	char	*x_s;
-	long	n;
-	long	n_mod;
+	char	*s2;
+	size_t	i;
 
-	x_s = NULL;
-	x_s = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!x_s)
+	s2 = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!s2)
 		return (NULL);
-	n = (unsigned int)content;
-	x_s[len] = '\0';
-	while (len-- > 0)
+	i = 0;
+	while (s1[i] != '\0')
 	{
-		n_mod = n % 16;
-		if (n_mod < 10)
-			x_s[len] = n_mod + '0';
-		else
-			x_s[len] = n_mod + (spec - 33);
-		n /= 16;
+		s2[i] = s1[i];
+		i++;
 	}
-	return (x_s);
+	s2[i] = '\0';
+	return (s2);
 }

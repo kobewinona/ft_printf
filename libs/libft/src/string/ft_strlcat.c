@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_fdata.c                                   :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 21:04:31 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 21:04:33 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/27 18:04:14 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/27 18:04:16 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_valid_fdata(const char *arg)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	dst_len;
+	size_t	src_len;
 	size_t	i;
 
-	i = 0;
-	if (arg[i] == '%' && arg[i + 1] != '\0')
+	dst_len = 0;
+	src_len = 0;
+	if (dst && src)
 	{
-		while (arg[i] && !ft_isdigit(arg[i]))
-		{
-			if (is_char_in_set(arg[i], "cspdiuxX%"))
-				return (1);
-			i++;
-		}
-		while (arg[i])
-		{
-			if (is_char_in_set(arg[i], "cspdiuxX%") && !ft_isspace(arg[i]))
-				return (1);
-			i++;
-		}
+		dst_len = ft_strlen(dst);
+		src_len = ft_strlen(src);
 	}
-	return (0);
+	if (dstsize > dst_len)
+	{
+		i = dst_len;
+		while (i < (dstsize - 1) && *src)
+		{
+			dst[i] = *src;
+			src++;
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	else
+		return (src_len + dstsize);
+	return (dst_len + src_len);
 }

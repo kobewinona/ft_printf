@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_x_xstr.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:28:51 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/26 12:28:52 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/04 16:10:57 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/04 16:10:59 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-char	*create_x_xtrs(void *content, ssize_t len, char spec)
+t_list	*ft_lstnew(void *content)
 {
-	char	*x_s;
-	long	n;
-	long	n_mod;
+	t_list	*head;
 
-	x_s = NULL;
-	x_s = (char *)ft_calloc((len + 1), sizeof(char));
-	if (!x_s)
+	head = (t_list *)malloc(sizeof(t_list));
+	if (!head)
 		return (NULL);
-	n = (unsigned int)content;
-	x_s[len] = '\0';
-	while (len-- > 0)
+	if (!content)
 	{
-		n_mod = n % 16;
-		if (n_mod < 10)
-			x_s[len] = n_mod + '0';
-		else
-			x_s[len] = n_mod + (spec - 33);
-		n /= 16;
+		head->content = (NULL);
+		head->next = (NULL);
 	}
-	return (x_s);
+	else
+	{
+		head->content = content;
+		head->next = (NULL);
+	}
+	return (head);
 }

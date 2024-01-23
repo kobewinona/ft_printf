@@ -1,5 +1,17 @@
-.DS_store
+# IDE
+.vscode
+../.idea
+*.dSYM
+
+# program
 a.out
-main.c
-*.txt
+
+# archive
 *.a
+
+#objects
+obj
+
+# rest
+.DS_store
+*.txt
