@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/27 20:23:53 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/27 20:23:55 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
-
-int	is_char_in_set(char const c, char const *set)
+int	ft_toupper(int c)
 {
-	while (*set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }

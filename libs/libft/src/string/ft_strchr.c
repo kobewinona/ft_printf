@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/27 20:39:14 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/27 20:39:15 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_char_in_set(char const c, char const *set)
+char	*ft_strchr(const char *s, int c)
 {
-	while (*set)
+	unsigned char	cu;
+
+	cu = (unsigned char)c;
+	while (*s)
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		if (*s == cu)
+			return ((char *)s);
+		s++;
 	}
-	return (0);
+	if (cu == '\0')
+		return ((char *)s);
+	return (NULL);
 }

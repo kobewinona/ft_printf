@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf_internal.h"
+#include "../includes/libftprintf_internal.h"
 
 void	count_precision_len(int n, t_fdata *fdata)
 {

@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/10/27 18:56:45 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/10/27 18:56:46 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_char_in_set(char const c, char const *set)
+long	ft_atol(const char *str)
 {
-	while (*set)
+	long	base;
+	long	sign;
+
+	base = 0;
+	sign = 1;
+	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	return (0);
+	while (*str && ft_isdigit(*str))
+	{
+		if (base * 10 <= LONG_MAX && base * 10 >= LONG_MIN)
+			base = (base * 10) + (*str - '0');
+		str++;
+	}
+	return (base * sign);
 }

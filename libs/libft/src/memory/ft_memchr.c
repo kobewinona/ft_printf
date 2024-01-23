@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/04 22:15:48 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/04 22:15:49 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_char_in_set(char const c, char const *set)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (*set)
+	unsigned char	*su;
+	unsigned char	cu;
+
+	su = (unsigned char *)s;
+	cu = (unsigned char)c;
+	while (n--)
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		if (*su == cu)
+			return (su);
+		su++;
 	}
-	return (0);
+	return (NULL);
 }

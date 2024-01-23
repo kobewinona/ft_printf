@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/26 20:51:22 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/26 20:51:23 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_char_in_set(char const c, char const *set)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	while (*set)
+	if (dst == src)
+		return (dst);
+	if (dst < src)
+		ft_memcpy(dst, src, len);
+	else
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		while (len--)
+			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
 	}
-	return (0);
+	return (dst);
 }

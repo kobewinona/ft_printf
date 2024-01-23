@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/09/04 21:44:19 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/09/04 21:44:21 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
-
-int	is_char_in_set(char const c, char const *set)
+int	ft_isalpha(int c)
 {
-	while (*set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
 	return (0);
 }

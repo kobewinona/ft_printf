@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_char_in_set.c                                   :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dklimkin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 13:34:12 by dklimkin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:34:13 by dklimkin         ###   ########.fr       */
+/*   Created: 2023/08/31 16:46:51 by dklimkin          #+#    #+#             */
+/*   Updated: 2023/08/31 16:46:52 by dklimkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf_internal.h"
+#include "../../includes/libft.h"
 
-int	is_char_in_set(char const c, char const *set)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	while (*set)
+	char	*modified_s;
+	size_t	i;
+
+	modified_s = NULL;
+	if (s && f)
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		modified_s = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+		if (!modified_s)
+			return (NULL);
+		i = 0;
+		while (s[i])
+		{
+			modified_s[i] = f(i, s[i]);
+			i++;
+		}
+		modified_s[i] = '\0';
 	}
-	return (0);
+	return (modified_s);
 }
